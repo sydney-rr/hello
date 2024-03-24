@@ -18,8 +18,12 @@ v2 <- c(4,5,6,7,8,9)
 x <- array(v2, dim = c(3,3))
 x
 
+#lets print the value in row 1, column 2
 x[1,2]
-#lets print the first row of the array
+#lets change the value in row 1, column 2 to the number 5
+x[1,2] <- 5
+x[1,2]
+#lets print the first row
 x[1,]
 #lets print the second column of the array
 x[,2]
@@ -47,8 +51,8 @@ outliers[1,2]
 #'length = 3' in coercion to 'logical(1)'
 for (j in 1:ncol(x)){
   outliers[,j] <- outliers[,j] && tukey.outlier(x[,j])
-  print(outliers[,j])
 }
+print(outliers[,j])
 
 #lets remove the double && and change it to &
 #now we get the error:
@@ -57,9 +61,9 @@ for (j in 1:ncol(x)){
 # we defined outliers in the function with outliers <- array(TRUE,dim=dim(x))
 #in the final function we will define tukey.outlier
 for (j in 1:ncol(x)){
-  outliers[,j] <- outliers[,j] & tukey.outlier(x[,j])
-  print(outliers[,j])
+  outliers[,j] <- outliers[,j] #& tukey.outlier(x[,j])
 }
+print(outliers[,j])
 
 
 #now lets break down the second half of the function
